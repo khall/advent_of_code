@@ -1,7 +1,7 @@
 require './9_input'
 
 class Routes
-  attr_accessor :cities, :paths, :shortest_route_length
+  attr_accessor :cities, :paths, :longest_route_length
 
   def initialize
     @paths = INPUT.split("\n").map do |line|
@@ -14,7 +14,7 @@ class Routes
     @city_paths = cities.permutation.to_a
   end
 
-  def find_shortest_route
+  def find_longest_route
     @city_paths.each do |path|
       path_length = 0
       path.each_with_index do |city, i|
@@ -22,19 +22,18 @@ class Routes
         break if next_city.nil?
         path_length += route_length("#{city} to #{next_city}")
       end
-      if shortest_route_length.nil? || path_length < shortest_route_length
-        @shortest_route_length = path_length
+      if longest_route_length.nil? || path_length > longest_route_length
+        @longest_route_length = path_length
       end
     end
   end
 
   def route_length(str)
     reversed_str = str.split(' ').reverse.join(' ')
-    puts "str: #{str}, path: #{@paths[str] || @paths[reversed_str]}"
     (@paths[str] || @paths[reversed_str]).to_i
   end
 end
 
 routes = Routes.new
-routes.find_shortest_route
-puts routes.shortest_route_length
+routes.find_longest_route
+puts routes.longest_route_length
