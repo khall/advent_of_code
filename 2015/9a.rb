@@ -30,7 +30,6 @@ class Routes
 
   def route_length(str)
     reversed_str = str.split(' ').reverse.join(' ')
-    puts "str: #{str}, path: #{@paths[str] || @paths[reversed_str]}"
     (@paths[str] || @paths[reversed_str]).to_i
   end
 end
