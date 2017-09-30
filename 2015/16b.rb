@@ -11,12 +11,22 @@ desired_attributes = { children: 3,
                        trees: 3,
                        cars: 2,
                        perfumes: 1 }
+operator = { children: '==',
+             cats: '>',
+             samoyeds: '==',
+             pomeranians: '<',
+             akitas: '==',
+             vizslas: '==',
+             goldfish: '<',
+             trees: '>',
+             cars: '==',
+             perfumes: '==' }
 
 i = 0
-found = aunt_attributes.detect do |attributes|
+aunt_attributes.detect do |attributes|
   i += 1
   attributes.all? do |k, v|
-    desired_attributes[k.to_sym] == v.to_i
+    v.to_i.public_send(operator[k.to_sym], desired_attributes[k.to_sym])
   end
 end
 
