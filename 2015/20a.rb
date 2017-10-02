@@ -10,12 +10,10 @@ def factors(num)
   found_list
 end
 
-minimum_presents = File.readlines('20_input').first.chomp.to_i
+minimum_presents = File.readlines('20_input').first.chomp.to_i / 10
 house_num = 1
 loop do
-  factors = factors(house_num)
-  factor_sum = factors.sum * 10
-  break if factor_sum > minimum_presents
+  break if factors(house_num).sum > minimum_presents
   house_num += 1
 end
 
