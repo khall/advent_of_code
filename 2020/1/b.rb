@@ -6,7 +6,7 @@ class SummedGroups
   end
 
   def find
-    input.combination(group_size).detect { |a, b, c| a + b + c == sum_target }
+    input.combination(group_size).detect { |combination| combination.sum == sum_target }
   end
 
   private
