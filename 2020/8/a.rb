@@ -12,7 +12,6 @@ class CPU
     executed_instructions = []
     while executing = input[current_instruction] do
       instruction, value = executing
-      puts "inst: #{current_instruction}, acc: #{accumulator} -- for #{instruction} #{value}"
       break if executed_instructions.include?(current_instruction)
       executed_instructions << current_instruction
 
