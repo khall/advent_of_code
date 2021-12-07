@@ -1,4 +1,3 @@
-
 class ExponentialGrowth
   def initialize
     @input = File.readlines('input').flat_map { |n| n.strip.split(',').map(&:to_i) }
