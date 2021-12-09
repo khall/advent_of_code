@@ -1,5 +1,3 @@
-require 'byebug'
-
 class SevenSegment
   def initialize
     @input = File.readlines('input').flat_map do |line|
