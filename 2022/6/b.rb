@@ -1,11 +1,11 @@
-class CleanupAssignment
+class RepeatingChars
   STR_LEN = 14
 
   def initialize
     @input = File.readlines('input').first.strip.chars
   end
 
-  def num_complete_overlaps
+  def index_of_non_repeating_chars
     @input.each_with_index do |char, i|
       next if i < STR_LEN
       return i if @input[i - STR_LEN, STR_LEN].uniq.size == STR_LEN
@@ -13,4 +13,4 @@ class CleanupAssignment
   end
 end
 
-puts CleanupAssignment.new.num_complete_overlaps
+puts RepeatingChars.new.index_of_non_repeating_chars
